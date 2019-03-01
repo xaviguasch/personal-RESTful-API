@@ -15,6 +15,18 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 
+mongoose.connect('mongodb://localhost:27017/wikiDB', {
+    useNewUrlParser: true
+})
+
+const articleSchema = new mongoose.Schema({
+    title: String,
+    content: String
+})
+
+const Article = mongoose.model('Article', articleSchema)
+
+
 
 
 app.listen(3000, function () {
